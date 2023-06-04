@@ -5,6 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\SubSubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,6 +65,46 @@ Route::prefix('brand')->group(function(){
     Route::get('/brand_active/{id}', [BrandController::class, 'active'])->name('brand.active');
     Route::get('/brand_inactive/{id}', [BrandController::class, 'inactive'])->name('brand.in_active');
 });
+  // ==================== Admin Category All Routes ===================//
+  Route::prefix('category')->group(function(){
+    Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/view/{id}', [CategoryController::class, 'view'])->name('category.view');
+    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/update/{id}',[CategoryController::class, 'update'])->name('category.update');
+    Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+    Route::get('/category_active/{id}', [CategoryController::class, 'active'])->name('category.active');
+    Route::get('/category_inactive/{id}', [CategoryController::class, 'inactive'])->name('category.in_active');
+ });
+
+ // ==================== Admin SubCategory All Routes ===================//
+Route::prefix('subcategory')->group(function(){
+    Route::get('/index', [SubCategoryController::class, 'index'])->name('subcategory.index');
+    Route::get('/create', [SubCategoryController::class, 'create'])->name('subcategory.create');
+    Route::post('/store', [SubCategoryController::class, 'store'])->name('subcategory.store');
+    Route::get('/view/{id}', [SubCategoryController::class, 'view'])->name('subcategory.view');
+    Route::get('/edit/{id}', [SubCategoryController::class, 'edit'])->name('subcategory.edit');
+    Route::post('/update/{id}',[SubCategoryController::class, 'update'])->name('subcategory.update');
+    Route::get('/delete/{id}', [SubCategoryController::class, 'delete'])->name('subcategory.delete');
+    Route::get('/subcategory_active/{id}', [SubCategoryController::class, 'active'])->name('subcategory.active');
+    Route::get('/subcategory_inactive/{id}', [SubCategoryController::class, 'inactive'])->name('subcategory.in_active');
+    Route::get('/category-subcategory/ajax/{category_id}',[SubCategoryController::class,'getsubcategory'])->name('subcategory.ajax');
+});
+// ==================== Admin SubSubCategory All Routes ===================//
+Route::prefix('subsubcategory')->group(function(){
+    Route::get('/index', [SubSubCategoryController::class, 'index'])->name('subsubcategory.index');
+    Route::get('/create', [SubSubCategoryController::class, 'create'])->name('subsubcategory.create');
+    Route::post('/store', [SubSubCategoryController::class, 'store'])->name('subsubcategory.store');
+    Route::get('/view/{id}', [SubSubCategoryController::class, 'view'])->name('subsubcategory.view');
+    Route::get('/edit/{id}', [SubSubCategoryController::class, 'edit'])->name('subsubcategory.edit');
+    Route::post('/update/{id}',[SubSubCategoryController::class, 'update'])->name('subsubcategory.udate');
+    Route::get('/delete/{id}', [SubSubCategoryController::class, 'delete'])->name('subsubcategory.delete');
+    Route::get('/subsubcategory_active/{id}', [SubSubCategoryController::class, 'active'])->name('subsubcategory.active');
+    Route::get('/subsubcategory_inactive/{id}', [SubSubCategoryController::class, 'inactive'])->name('subsubcategory.in_active');
+
+});
+ 
 });
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');

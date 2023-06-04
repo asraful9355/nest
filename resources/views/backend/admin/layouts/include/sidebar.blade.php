@@ -34,6 +34,34 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                </div>
+                <div class="menu-title">Category</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('category.index') }}"><i class="bx bx-right-arrow-alt"></i>All Category</a>
+                </li>
+                <li> <a href="{{ route('category.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
+                </li>
+               
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                </div>
+                <div class="menu-title">Sub Category</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('subcategory.index') }}"><i class="bx bx-right-arrow-alt"></i>All Sub Category</a>
+                </li>
+                <li> <a href="{{ route('subcategory.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Sub Category</a>
+                </li>
+               
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
                 <div class="menu-title">Application</div>
