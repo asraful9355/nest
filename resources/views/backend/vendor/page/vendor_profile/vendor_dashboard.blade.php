@@ -1,20 +1,20 @@
 
 @extends('backend.vendor.layouts.master')
-
-{{-- Page Title --}}
-@section('page_title', 'Dashboard')
-
-{{-- Additional CSS --}}
-@push('Backend_style')
-@endpush
-
-
-{{-- Main Content --}}
 @section('page_content')
+@php
+ $id = Auth::user()->id;  
+ $vendorId = App\Models\User::find($id);
+ $status = $vendorId->status;
+@endphp
 
 
     <div class="page-content">
-
+@if ($status === 'active')
+    <h4>Vendor Account is <span class="text-success">Active</span></h4>
+@else
+<h4>Vendor Account is <span class="text-danger">InActive</span></h4>
+<p class="text-danger"><b>please wait admin will check and approve your account</b></p>
+@endif
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
             <div class="col">
                 <div class="card radius-10 bg-gradient-deepblue">
