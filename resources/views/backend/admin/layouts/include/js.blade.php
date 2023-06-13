@@ -75,17 +75,18 @@
   } );
 </script>
 
+<script>
+  tinymce.init({
+    selector: '.mytextarea'
+  });
+ </script>
+
 <!-- tag er jonne neowa atuko -->
 <script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 
 <script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
 </script>
 
-<script>
- tinymce.init({
-   selector: '.mytextarea'
- });
-</script>
 
 <!-- Image Show Script -->
 <script type="text/javascript">
@@ -139,4 +140,12 @@
     });
   });
 </script>
+
+<!-- include summernote js -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+  $(document).ready(function() {
+  $('.description').summernote();
+  });
+ </script>
 

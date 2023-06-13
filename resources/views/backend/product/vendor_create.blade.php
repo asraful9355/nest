@@ -1,31 +1,31 @@
-@extends('backend.admin.layouts.master')
+@extends('backend.vendor.layouts.master')
 @section('page_content')
 <!-- Main Content -->
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center form-group mb-3">
-       <div class="breadcrumb-title pe-3">Add New Product</div>
+       <div class="breadcrumb-title pe-3">Add Vendor Product</div>
        <div class="ps-3">
           <nav aria-label="breadcrumb">
              <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Add New Product</li>
+                <li class="breadcrumb-item active" aria-current="page">Add Vendor Product</li>
              </ol>
           </nav>
        </div>
        <div class="ms-auto">
-         <div class="btn-group">
-            <a href="{{ route('product.index') }}" class="btn btn-primary">All Product</a> 				 
-         </div>
-      </div>
+        <div class="btn-group">
+           <a href="{{ route('vendor.product.index') }}" class="btn btn-primary">All Product</a> 				 
+        </div>
+     </div>
     </div>
     <!--end breadcrumb-->
     <div class="card">
        <div class="card-body p-4">
-          <h5 class="card-title">Add New Product</h5>
+          <h5 class="card-title">Add Vendor Product</h5>
           <hr/>
-          <form id="myForm" method="post" action="{{ route('product.store') }}" enctype="multipart/form-data" >
+          <form id="myForm" method="post" action="{{ route('vendor.product.store') }}" enctype="multipart/form-data" >
             @csrf
                <div class="form-body mt-4">
              <div class="row">
@@ -128,16 +128,7 @@
                             </select>
                          </div> 
 
-                        <div class=" col-12">
-                            <label for="inputCollection" class="form-label">Select Vendor</label>
-                            <select name="vendor_id" class="form-select" id="inputCollection">
-                              <option disabled selected>Select Vendor</option>
-                              @foreach($activeVendor as $vendor)
-                               <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
-                              @endforeach
-                            </select>
-                         </div>
-
+                     
                          <div class="form-group col-12">
                            <div class="row g-3">
                               <div class=" col-md-6">
@@ -234,7 +225,7 @@
          var category_id = $(this).val();
          if(category_id) {
              $.ajax({
-                 url: "{{  url('product/category-subcategory/ajax') }}/"+category_id,
+                 url: "{{  url('/vendor/subcategory/ajax') }}/"+category_id,
                  type:"GET",
                  dataType:"json",
                  success:function(data) {

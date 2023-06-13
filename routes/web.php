@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -160,4 +161,19 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::post('/vendor/profile/store', [VendorController::class, 'VendorProfileStore'])->name('vendor.profile.store');
     Route::get('/vendor/change/password', [VendorController::class, 'VendorChangePassword'])->name('vendor.change.password');
     Route::post('/vendor/update/password', [VendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
-});
+
+    // Vendor Add Product All Route 
+    Route::controller(VendorProductController::class)->group(function(){
+    Route::get('/vendor/all/product' , 'index')->name('vendor.product.index');
+    Route::get('/vendor/create/product' , 'create')->name('vendor.product.create');
+    Route::get('/vendor/subcategory/ajax/{category_id}','VendorGetsubcategory')->name('subcategory.product.ajax');
+    Route::post('/vendor/product/store', [VendorProductController::class, 'VendorProductStore'])->name('vendor.product.store');
+	
+
+    });
+   
+    
+
+
+
+});//end group middleware   
