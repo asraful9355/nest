@@ -59,13 +59,13 @@
                       </td>
                       <td> 
                         @if($item->status == 1)
-                        <a href="{{ route('product.in_active',['id'=>$item->id]) }}" class="badge rounded-pill bg-success">Active</a>
+                        <a href="{{ route('vendor.product.in_active',['id'=>$item->id]) }}" class="badge rounded-pill bg-success">Active</a>
                         @else
-                          <a href="{{ route('product.active',['id'=>$item->id]) }}" class="badge rounded-pill bg-danger">Disable</a>
+                          <a href="{{ route('vendor.product.active',['id'=>$item->id]) }}" class="badge rounded-pill bg-danger">Disable</a>
                         @endif
                       </td>
                       <td>
-                         <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"> <i class="fa fa-pencil"></i> </a>
+                         <a href="{{ route('vendor.product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"> <i class="fa fa-pencil"></i> </a>
                          <a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger" id="delete" title="Delete Data" ><i class="fa fa-trash"></i></a>
                          <a href="{{ route('product.edit',$item->id) }}" class="btn btn-warning" title="Details Page"> <i class="fa fa-eye"></i> </a>
 
