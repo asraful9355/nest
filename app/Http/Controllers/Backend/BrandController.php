@@ -37,10 +37,10 @@ class BrandController extends Controller
     {
 
 
-        // $this->validate($request,[
-        //     'brand_name_en'=>'required',
-        //     'brand_image'=>'required'
-        // ]);
+        $this->validate($request,[
+            'brand_name_en'=>'required',
+            'brand_image'=>'required'
+        ]);
 
         if($request->hasfile('brand_image')){
             $image = $request->file('brand_image');
@@ -61,7 +61,7 @@ class BrandController extends Controller
         }
 
         if($request->status == Null){
-            $request->status = 0;
+            $request->status = 1;
         }
         $brand->brand_slug_en = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->brand_name_en)));
         $brand->status = $request->status;
@@ -128,7 +128,7 @@ class BrandController extends Controller
         }
 
         if($request->status == Null){
-            $request->status = 0;
+            $request->status = 1;
         }
         $brand->brand_slug_en = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->brand_name_en)));
         $brand->status = $request->status;

@@ -15,7 +15,12 @@
             </ol>
          </nav>
       </div>
-   </div>
+      <div class="ms-auto">
+        <div class="btn-group">
+           <a href="{{ route('vendor.product.index') }}" class="btn btn-primary">All Vendor Product</a> 				 
+        </div>
+     </div>
+  </div>
    <!--end breadcrumb-->
    <div class="card">
       <div class="card-body p-4">
@@ -202,8 +207,8 @@
 		</thead>
 		<tbody>
 
- <form method="post" action="{{ route('vendor.product.update.multiimage') }}" enctype="multipart/form-data" >
-			@csrf
+ <form method="post" action="{{ route('multiimage_update') }}" enctype="multipart/form-data" >
+@csrf
 
 	@foreach($multiImgs as $key => $img)
 	<tr>
@@ -218,8 +223,7 @@
 		</td>
 	</tr>
 	@endforeach		 
-
-		</form>	 
+</form>	 
 		</tbody>
 	</table>
 </div>

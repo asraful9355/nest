@@ -7,6 +7,8 @@ use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
@@ -77,8 +79,7 @@ Route::prefix('product')->group(function(){
 	
 
 });
-
-    // ==================== Admin Brand All Routes ===================//
+ // ==================== Admin Brand All Routes ===================//
 Route::prefix('brand')->group(function(){
     Route::get('/index', [BrandController::class, 'index'])->name('brand.index');
     Route::get('/create', [BrandController::class, 'create'])->name('brand.create');
@@ -90,6 +91,32 @@ Route::prefix('brand')->group(function(){
     Route::get('/delete/{id}', [BrandController::class, 'delete'])->name('brand.delete');
     Route::get('/brand_active/{id}', [BrandController::class, 'active'])->name('brand.active');
     Route::get('/brand_inactive/{id}', [BrandController::class, 'inactive'])->name('brand.in_active');
+});
+    // ==================== Admin Slider All Routes ===================//
+Route::prefix('slider')->group(function(){
+    Route::get('/index', [SliderController::class, 'index'])->name('slider.index');
+    Route::get('/create', [SliderController::class, 'create'])->name('slider.create');
+    Route::post('/store', [SliderController::class, 'store'])->name('slider.store');
+    Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+    Route::get('/view/{id}', [SliderController::class, 'view'])->name('slider.view');
+    Route::get('/view/{id}', [SliderController::class, 'view'])->name('slider.view');
+    Route::post('/update/{id}',[SliderController::class, 'update'])->name('slider.update');
+    Route::get('/delete/{id}', [SliderController::class, 'delete'])->name('slider.delete');
+    Route::get('/slider_active/{id}', [SliderController::class, 'active'])->name('slider.active');
+    Route::get('/slider_inactive/{id}', [SliderController::class, 'inactive'])->name('slider.in_active');
+});
+    // ==================== Banner Slider All Routes ===================//
+Route::prefix('banner')->group(function(){
+    Route::get('/index', [BannerController::class, 'index'])->name('banner.index');
+    Route::get('/create', [BannerController::class, 'create'])->name('banner.create');
+    Route::post('/store', [BannerController::class, 'store'])->name('banner.store');
+    Route::get('/edit/{id}', [BannerController::class, 'edit'])->name('banner.edit');
+    Route::get('/view/{id}', [BannerController::class, 'view'])->name('banner.view');
+    Route::get('/view/{id}', [BannerController::class, 'view'])->name('banner.view');
+    Route::post('/update/{id}',[BannerController::class, 'update'])->name('banner.update');
+    Route::get('/delete/{id}', [BannerController::class, 'delete'])->name('banner.delete');
+    Route::get('/banner_active/{id}', [BannerController::class, 'active'])->name('banner.active');
+    Route::get('/banner_inactive/{id}', [BannerController::class, 'inactive'])->name('banner.in_active');
 });
   // ==================== Admin Category All Routes ===================//
   Route::prefix('category')->group(function(){
@@ -174,7 +201,8 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
 
     Route::post('/vendor/product/update/thambnail/{id}', [VendorProductController::class, 'VendorProductUpdateThambnail'])->name('vendor.product.update.thambnail');
 
-    Route::post('/vendor/product/update/multiimage', [VendorProductController::class, 'VendorProductUpdateMultiimage'])->name('vendor.product.update.multiimage');
+    Route::post('/vendor/product/multiimg/update', [VendorProductController::class, 'VendorProductUpdateMultiimage'])->name('multiimage_update');
+    
     Route::get('/vendor/product/multiimg/delete/{id}' , [VendorProductController::class,'VendorMulitImageDelelte'])->name('vendor.product.multiimg.delete');
 
     Route::get('/vendor/product/delete/{id}', [VendorProductController::class, 'VendorProductDelete'])->name('vendor.product.delete');

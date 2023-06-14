@@ -79,7 +79,7 @@
   tinymce.init({
     selector: '.mytextarea'
   });
- </script>
+</script>
 
 <!-- tag er jonne neowa atuko -->
 <script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>

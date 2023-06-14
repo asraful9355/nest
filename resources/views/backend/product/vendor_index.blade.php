@@ -66,7 +66,7 @@
                       </td>
                       <td>
                          <a href="{{ route('vendor.product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"> <i class="fa fa-pencil"></i> </a>
-                         <a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger" id="delete" title="Delete Data" ><i class="fa fa-trash"></i></a>
+                         <a href="{{ route('vendor.product.delete',$item->id) }}" class="btn btn-danger" id="delete" title="Delete Data" ><i class="fa fa-trash"></i></a>
                          <a href="{{ route('product.edit',$item->id) }}" class="btn btn-warning" title="Details Page"> <i class="fa fa-eye"></i> </a>
 
                       </td>

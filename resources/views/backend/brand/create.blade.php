@@ -83,7 +83,7 @@
                           <select name="status" id="status" class="form-control">
                             <option value="1">Active</option>
                             <option value="0">Disable</option>
-                        </select>
+                          </select>
                         </div>
                      </div>
                        <div class="row">
@@ -108,10 +108,16 @@
               brand_name_en: {
                   required : true,
               }, 
+              brand_image: {
+                  required : true,
+              }, 
           },
           messages :{
               brand_name_en: {
                   required : 'Please Enter Brand Name',
+              },
+              brand_image: {
+                  required : 'Please Enter Brand Image',
               },
           },
           errorElement : 'span', 

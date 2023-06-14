@@ -262,6 +262,41 @@ public function inactive($id){
 
 }
 
+public function delete($id){
+
+    $product = Product::findOrFail($id);
+
+        try {
+            if(file_exists($product->product_thumbnail)){
+                unlink($product->product_thumbnail);
+            }
+        } catch (Exception $e) {
+
+        }
+
+        $product->delete();
+
+        $images = MultiImg::where('product_id',$id)->get();
+        foreach ($images as $img) {
+            try {
+                if(file_exists($img->photo_name)){
+                    unlink($img->photo_name);
+                }
+            } catch (Exception $e) {
+
+            }
+            MultiImg::where('product_id',$id)->delete();
+        }
+
+        $notification = array(
+            'message' => 'Product Deleted Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
+}// End Method 
+
 
     
 }

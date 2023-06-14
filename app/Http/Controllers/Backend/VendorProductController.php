@@ -198,7 +198,7 @@ public function VendorProductUpdateThambnail(Request $request, $id){
 
 // Multi Image Update 
 public function VendorProductUpdateMultiimage(Request $request){
-    dd($request->all());
+  
     $imgs = $request->multi_img;
 
     foreach($imgs as $id => $img ){
@@ -229,9 +229,7 @@ public function VendorProductUpdateMultiimage(Request $request){
 public function VendorMulitImageDelelte($id){
     $oldImg = MultiImg::findOrFail($id);
     unlink($oldImg->photo_name);
-
     MultiImg::findOrFail($id)->delete();
-
     $notification = array(
         'message' => 'Product Multi Image Deleted Successfully',
         'alert-type' => 'success'
@@ -246,29 +244,52 @@ public function VendorProductActive($id){
     $product = Product::find($id);
     $product->status = 1;
     $product->save();
-
     Session::flash('success','Product Active Successfully.');
     return redirect()->back();
 }
 
-public function VendorInactive($id){
+public function VendorProductInactive($id){
     $product = Product::find($id);
     $product->status = 0;
     $product->save();
-
     Session::flash('success','Product Disabled Successfully.');
     return redirect()->back();
 
 }
 public function VendorProductDelete($id){
-    $product = Product::find($id);
-    $product->status = 0;
-    $product->save();
 
-    Session::flash('success','Product Disabled Successfully.');
-    return redirect()->back();
+    $product = Product::findOrFail($id);
 
-}
+        try {
+            if(file_exists($product->product_thumbnail)){
+                unlink($product->product_thumbnail);
+            }
+        } catch (Exception $e) {
+
+        }
+
+        $product->delete();
+
+        $images = MultiImg::where('product_id',$id)->get();
+        foreach ($images as $img) {
+            try {
+                if(file_exists($img->photo_name)){
+                    unlink($img->photo_name);
+                }
+            } catch (Exception $e) {
+
+            }
+            MultiImg::where('product_id',$id)->delete();
+        }
+
+        $notification = array(
+            'message' => 'vendor Product Deleted Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
+}// End Method 
 
 
 

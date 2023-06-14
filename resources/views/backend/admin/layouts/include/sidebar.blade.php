@@ -26,6 +26,34 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Banner Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('banner.index') }}"><i class="bx bx-right-arrow-alt"></i>All Banner</a>
+                </li>
+                <li> <a href="{{ route('banner.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Banner</a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='fa-solid fa-photo-film fontawesome_icon_custom'></i>
+                </div>
+                <div class="menu-title">Slider Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('slider.index') }}"><i class="bx bx-right-arrow-alt"></i>All Slider</a>
+                </li>
+                <li> <a href="{{ route('slider.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Slider</a>
+                </li>
+               
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-circle'></i>
                 </div>
                 <div class="menu-title">Brand</div>
@@ -49,16 +77,7 @@
                 </li>
                 <li> <a href="{{ route('category.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
                 </li>
-               
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
-                </div>
-                <div class="menu-title">Sub Category</div>
-            </a>
-            <ul>
+
                 <li> <a href="{{ route('subcategory.index') }}"><i class="bx bx-right-arrow-alt"></i>All Sub Category</a>
                 </li>
                 <li> <a href="{{ route('subcategory.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Sub Category</a>
@@ -68,7 +87,7 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                <div class="parent-icon"><i class='fa-solid fa-bag-shopping fontawesome_icon_custom'></i>
                 </div>
                 <div class="menu-title">Product Manage</div>
             </a>
@@ -79,37 +98,6 @@
                 </li>
                
             </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
-                </div>
-                <div class="menu-title">Application</div>
-            </a>
-            <ul>
-                <li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Email</a>
-                </li>
-                <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Chat Box</a>
-                </li>
-                <li> <a href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>File Manager</a>
-                </li>
-                <li> <a href="app-contact-list.html"><i class="bx bx-right-arrow-alt"></i>Contatcs</a>
-                </li>
-                <li> <a href="app-to-do.html"><i class="bx bx-right-arrow-alt"></i>Todo List</a>
-                </li>
-                <li> <a href="app-invoice.html"><i class="bx bx-right-arrow-alt"></i>Invoice</a>
-                </li>
-                <li> <a href="app-fullcalender.html"><i class="bx bx-right-arrow-alt"></i>Calendar</a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-label">UI Elements</li>
-        <li>
-            <a href="widgets.html">
-                <div class="parent-icon"><i class='bx bx-cookie'></i>
-                </div>
-                <div class="menu-title">Widgets</div>
-            </a>
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">

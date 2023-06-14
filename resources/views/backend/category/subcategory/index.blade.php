@@ -48,8 +48,8 @@
                    @foreach($subcategories as $key => $item)		
                    <tr>
                       <td> {{ $key+1 }} </td>
-                      <td>{{ $item['category']['category_name_en'] }}</td>
-                      <td>{{ $item['category']['category_name_bn'] }}</td>
+                      <td>{{  $item->category->category_name_en ?? 'NULL' }}</td>
+                      <td>{{  $item->category->category_name_bn ?? 'NULL' }}</td>
                       <td> {{ $item->subcategory_name_en }}  </td>
                       <td> {{ $item->subcategory_name_bn }}  </td>
                       <td>  
