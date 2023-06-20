@@ -76,25 +76,30 @@ public function store(Request $request)
 
     ]);
 
-    /// Multiple Image Upload From her //////
-    $images = $request->file('multi_img');
-    foreach($images as $img){
-        $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-    Image::make($img)->resize(800,800)->save('upload/products/multi-image/'.$make_name);
-    $uploadPath = 'upload/products/multi-image/'.$make_name;
-
     
-    MultiImg::insert([
+    if($request->hasfile('multi_img')){
+ /// Multiple Image Upload From her //////
+ $images = $request->file('multi_img');
+ foreach($images as $img){
+     $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+ Image::make($img)->resize(800,800)->save('upload/products/multi-image/'.$make_name);
+ $uploadPath = 'upload/products/multi-image/'.$make_name;
 
-        'product_id' => $product_id,
-        'photo_name' => $uploadPath,
-        'created_at' => Carbon::now(), 
+ 
+ MultiImg::insert([
 
-    ]); 
-    } // end foreach
+     'product_id' => $product_id,
+     'photo_name' => $uploadPath,
+     'created_at' => Carbon::now(), 
 
-    /// End Multiple Image Upload From her //////
+ ]); 
+ } // end foreach
 
+ /// End Multiple Image Upload From her //////
+
+    }
+
+   
     $notification = array(
         'message' => 'Product Inserted Successfully',
         'alert-type' => 'success'

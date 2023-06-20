@@ -14,6 +14,8 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\Frontend\IndexController ;
 
 
 /*
@@ -31,6 +33,9 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
+/*================== Multi Language All Routes =================*/
+Route::get('/language/bangla', [LanguageController::class, 'Bangla'])->name('bangla.language');
+Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
@@ -210,9 +215,7 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::get('/vendor/product_inactive/{id}', [VendorProductController::class, 'VendorProductInactive'])->name('vendor.product.in_active');
 
     });
-   
-    
+});//end group middleware  
 
-
-
-});//end group middleware   
+/// Frontend Product Details All Route 
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);

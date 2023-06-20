@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('category_id');
             $table->integer('subcategory_id');
             $table->string('product_name_en');
-            $table->string('product_name_bn');
+            $table->string('product_name_bn')->nullable();
             $table->string('product_slug');
             $table->string('product_code');
             $table->string('product_qty');
@@ -28,10 +28,10 @@ return new class extends Migration
             $table->string('product_color')->nullable();
             $table->string('selling_price');
             $table->string('discount_price')->nullable();
-            $table->text('short_descp_en');
-            $table->text('short_descp_bn');
-            $table->text('long_descp_en');
-            $table->text('long_descp_bn');
+            $table->text('short_descp_en')->nullable();
+            $table->text('short_descp_bn')->nullable();
+            $table->text('long_descp_en')->nullable();
+            $table->text('long_descp_bn')->nullable();
             $table->string('product_thambnail');
             $table->string('vendor_id')->nullable();
             $table->integer('hot_deals')->nullable();
