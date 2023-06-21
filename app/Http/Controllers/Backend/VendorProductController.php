@@ -45,6 +45,31 @@ public function VendorProductStore(Request $request)
     Image::make($image)->resize(800,800)->save('upload/products/thambnail/'.$name_gen);
     $save_url = 'upload/products/thambnail/'.$name_gen;
 
+    // $product = new Product;
+
+    // $product->product_name_en = $request->product_name_en;
+    
+    //  if($request->product_name_bn == ''){
+    //      $product->product_name_bn = $request->product_name_en;
+    //  }else{
+    //      $product->product_name_bn = $request->product_name_bn;
+    //  }
+
+    // $product->short_descp_en = $request->short_descp_en;
+    
+    //  if($request->short_descp_bn == ''){
+    //      $product->short_descp_bn = $request->short_descp_en;
+    //  }else{
+    //      $product->short_descp_bn = $request->short_descp_bn;
+    //  }
+    // $product->long_descp_en = $request->long_descp_en;
+    
+    //  if($request->long_descp_bn == ''){
+    //      $product->long_descp_bn = $request->long_descp_en;
+    //  }else{
+    //      $product->long_descp_bn = $request->long_descp_bn;
+    //  }
+
     $product_id = Product::insertGetId([
 
         'brand_id' => $request->brand_id,
@@ -65,12 +90,10 @@ public function VendorProductStore(Request $request)
         'short_descp_bn' => $request->short_descp_bn,
         'long_descp_en' => $request->long_descp_en, 
         'long_descp_bn' => $request->long_descp_bn, 
-
         'hot_deals' => $request->hot_deals,
         'featured' => $request->featured,
         'special_offer' => $request->special_offer,
         'special_deals' => $request->special_deals, 
-
         'product_thambnail' => $save_url,
         'vendor_id' => Auth::user()->id,
         'status' => 1,
@@ -78,7 +101,11 @@ public function VendorProductStore(Request $request)
 
     ]);
 
-    /// Multiple Image Upload From her //////
+    
+
+    // Multiple Image Upload From her //////
+    
+    if($request->hasfile('multi_img')){
     $images = $request->file('multi_img');
     foreach($images as $img){
         $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
@@ -96,6 +123,7 @@ public function VendorProductStore(Request $request)
     } // end foreach
 
     /// End Multiple Image Upload From her //////
+    }
 
     $notification = array(
         'message' => 'Vendor Product Inserted Successfully',

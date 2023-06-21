@@ -238,12 +238,12 @@
    $(document).ready(function (){
        $('#myForm').validate({
            rules: {
-               product_name_en_en: {
+               product_name_en: {
                    required : true,
                }, 
-                short_descp_en_en: {
-                   required : true,
-               }, 
+               //  short_descp_en: {
+               //     required : true,
+               // }, 
                 product_thambnail: {
                    required : true,
                }, 
@@ -270,18 +270,18 @@
                }, 
            },
            messages :{
-               product_name_en_en: {
-                   required : 'Please Enter Product Name',
+               product_name_en: {
+                   required : 'Please Enter Product Name En',
                },
-               short_descp_en_en: {
-                   required : 'Please Enter Short Description',
-               },
+               // short_descp_en: {
+               //     required : 'Please Enter Short Description En',
+               // },
                product_thambnail: {
                    required : 'Please Select Product Thambnail Image',
                },
-               multi_img: {
-                   required : 'Please Select Product Multi Image',
-               },
+               // multi_img: {
+               //     required : 'Please Select Product Multi Image',
+               // },
                selling_price: {
                    required : 'Please Enter Selling Price',
                }, 
