@@ -276,7 +276,9 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                         </li>
                        
                         
-                        @foreach($categories as $category)    
+                        @foreach($categories as $category)  
+
+                        @if($loop->iteration <= 5) 
                         <li>
                            <a href="#">
                               @if(session()->get('language') == 'bangla') 
@@ -303,6 +305,9 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                               @endforeach
                            </ul>
                         </li>
+                        @else
+                        @break
+                        @endif
                         @endforeach
                        
                         <li>
