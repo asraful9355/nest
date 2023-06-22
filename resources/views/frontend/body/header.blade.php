@@ -280,7 +280,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
 
                         @if($loop->iteration <= 5) 
                         <li>
-                           <a href="#">
+                           <a href="{{ url('product/category/'.$category->id.'/'.$category->slug) }}">
                               @if(session()->get('language') == 'bangla') 
                               {{ $category->category_name_bn }}
                               @else 
@@ -294,7 +294,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                            <ul class="sub-menu">
                               @foreach($subcategories as $subcategory)   
                               <li>
-                              <a href="vendors-grid.html">
+                              <a href="{{ url('product/subcategory/'.$subcategory->id.'/'.$subcategory->slug) }}">
                               @if(session()->get('language') == 'bangla') 
                                  {{ $subcategory->subcategory_name_bn }}
                               @else 
