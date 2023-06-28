@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\VendorProductController;
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController ;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\User\CompareController;
 
 
 /*
@@ -196,7 +199,7 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::controller(VendorProductController::class)->group(function(){
     Route::get('/vendor/all/product' , 'index')->name('vendor.product.index');
     Route::get('/vendor/create/product' , 'create')->name('vendor.product.create');
-    Route::get('/vendor/subcategory/ajax/{category_id}','VendorGetsubcategory')->name('subcategory.product.ajax');
+    Route::get('/vendor/subcategory/ajax/{category_id}','VendorGetsubcategory')->name('vendor.subcategory.product.ajax');
     Route::post('/vendor/product/store', [VendorProductController::class, 'VendorProductStore'])->name('vendor.product.store');
     Route::get('/vendor/product/edit/{id}', [VendorProductController::class, 'vendorProductEdit'])->name('vendor.product.edit');
     Route::post('/vendor/product/update/{id}',[VendorProductController::class, 'VendorProductUpdate'])->name('vendor.product.update');
@@ -211,7 +214,6 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::get('/vendor/product/delete/{id}', [VendorProductController::class, 'VendorProductDelete'])->name('vendor.product.delete');
     Route::get('/vendor/product_active/{id}', [VendorProductController::class, 'VendorProductActive'])->name('vendor.product.active');
     Route::get('/vendor/product_inactive/{id}', [VendorProductController::class, 'VendorProductInactive'])->name('vendor.product.in_active');
-
     });
 });//end group middleware  
 
@@ -227,5 +229,37 @@ Route::get('/product/category/{id}/{slug}', [IndexController::class, 'CatWisePro
 Route::get('/product/subcategory/{id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
 
 // Product View Modal With Ajax
-
 Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
+// Add to cart  store data 
+
+Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+
+// Get Data from mini Cart
+Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);
+
+// mini cart remove er jonne 
+Route::get('/minicart/product/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+
+/// Add to cart store data For Product Details Page 
+Route::post('/dcart/data/store/{id}', [CartController::class, 'AddToCartDetails']);
+/// Add to Wishlist 
+Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToWishList']);
+   
+// Add to Compare 
+   Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCompare']);
+
+// User All Route
+Route::middleware(['auth','role:user'])->group(function() {
+
+    // Wishlist All Route 
+   Route::controller(WishlistController::class)->group(function(){
+       Route::get('/wishlist' , 'AllWishlist')->name('wishlist');
+       Route::get('/get-wishlist-product' , 'GetWishlistProduct');
+       Route::get('/wishlist-remove/{id}' , 'WishlistRemove');
+   
+   }); 
+   
+   
+   }); // end group middleware
+
+
