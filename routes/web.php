@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
+use App\Http\Controllers\Backend\CouponController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Frontend\LanguageController;
@@ -163,6 +164,21 @@ Route::prefix('subsubcategory')->group(function(){
     Route::get('/subsubcategory_inactive/{id}', [SubSubCategoryController::class, 'inactive'])->name('subsubcategory.in_active');
     
 });
+
+ // ==================== Admin Brand All Routes ===================//
+ Route::prefix('coupon')->group(function(){
+    Route::get('/index', [CouponController::class, 'index'])->name('coupon.index');
+    Route::get('/create', [CouponController::class, 'create'])->name('coupon.create');
+    Route::post('/store', [CouponController::class, 'store'])->name('coupon.store');
+    Route::get('/edit/{id}', [CouponController::class, 'edit'])->name('coupon.edit');
+    Route::get('/view/{id}', [CouponController::class, 'view'])->name('coupon.view');
+    Route::get('/view/{id}', [CouponController::class, 'view'])->name('coupon.view');
+    Route::post('/update/{id}',[CouponController::class, 'update'])->name('coupon.update');
+    Route::get('/delete/{id}', [CouponController::class, 'delete'])->name('coupon.delete');
+    Route::get('/coupon_active/{id}', [CouponController::class, 'active'])->name('coupon.active');
+    Route::get('/coupon_inactive/{id}', [CouponController::class, 'inactive'])->name('coupon.in_active');
+});
+
  // Vendor Active and Inactive All Route 
   Route::controller(AdminController::class)->group(function(){
     Route::get('/inactive/vendor' , 'InactiveVendor')->name('inactive.vendor');

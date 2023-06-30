@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
+            $table->string('coupon_name');
+            $table->integer('coupon_discount');
+            $table->string('coupon_validity');
+           $table->unsignedTinyInteger('status')->default(1)->comment('1=>Active, 0=>Inactive');
             $table->timestamps();
         });
     }
