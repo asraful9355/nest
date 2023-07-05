@@ -35,7 +35,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                         @if(session()->get('language') == 'bangla')
                          <a class="language-dropdown-active" href="{{ route('english.language') }}">English</a>
                          @else
-                         <a class="language-dropdown-active" href="{{ route('bangla.language') }}">বাংলা</a>
+                         <a class="language-dropdown-active" href="{{ route('bangla.language') }}"> বাংলা </a>
                          @endif
                       </li>
                       <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>

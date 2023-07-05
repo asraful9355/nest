@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\IndexController ;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 
 
 /*
@@ -80,8 +81,7 @@ Route::prefix('product')->group(function(){
     Route::post('/product/update/thambnail/{id}', [ProductController::class, 'ProductUpdateThambnail'])->name('product.update.thambnail');
     Route::post('/product/update/multiimage', [ProductController::class, 'ProductUpdateMultiimage'])->name('product.update.multiimage');
     Route::get('/product/multiimg/delete/{id}' , [ProductController::class,'MulitImageDelelte'])->name('product.multiimg.delete');
-
-    		/* ================  Category & Subcategory With Ajax ================== */
+    /* ================  Category & Subcategory With Ajax ================== */
     Route::get('/category-subcategory/ajax/{category_id}',[ProductController::class,'getsubcategory'])->name('subcategory.product.ajax');
 	
 
@@ -179,14 +179,48 @@ Route::prefix('subsubcategory')->group(function(){
     Route::get('/coupon_inactive/{id}', [CouponController::class, 'inactive'])->name('coupon.in_active');
 });
 
+ // Shipping Division All Route 
+ Route::controller(ShippingAreaController::class)->group(function(){
+    Route::get('/all/division' , 'AllDivision')->name('division.index');
+    Route::get('/add/division' , 'AddDivision')->name('division.create');
+    Route::post('/store/division' , 'StoreDivision')->name('division.store');
+    Route::get('/edit/coupon/{id}' , 'EditDivision')->name('division.edit');
+    Route::post('/update/coupon' , 'UpdateDivision')->name('division.update');
+    Route::get('/delete/coupon/{id}' , 'DeleteDivision')->name('division.delete');
+
+});
+
+
+ // Shipping District All Route 
+ Route::controller(ShippingAreaController::class)->group(function(){
+    Route::get('/all/district' , 'AllDistrict')->name('district.index');
+    Route::get('/add/district' , 'AddDistrict')->name('district.create');
+    Route::post('/store/district' , 'StoreDistrict')->name('district.store');
+    Route::get('/edit/division/{id}' , 'EditDistrict')->name('district.edit');
+    Route::post('/update/division' , 'UpdateDistrict')->name('district.update');
+    Route::get('/delete/division/{id}' , 'DeleteDistrict')->name('district.delete');
+
+}); 
+
+ // Shipping State All Route 
+ Route::controller(ShippingAreaController::class)->group(function(){
+    Route::get('/all/state' , 'AllState')->name('state.index');
+    Route::get('/add/state' , 'AddState')->name('state.create');
+    Route::post('/store/state' , 'StoreState')->name('state.store');
+    Route::get('/edit/state/{id}' , 'EditState')->name('state.edit');
+    Route::post('/update/state' , 'UpdateState')->name('state.update');
+    Route::get('/delete/state/{id}' , 'DeleteState')->name('state.delete');
+
+    Route::get('/district/ajax/{division_id}' , 'GetDistrict');
+
+}); 
+
  // Vendor Active and Inactive All Route 
   Route::controller(AdminController::class)->group(function(){
     Route::get('/inactive/vendor' , 'InactiveVendor')->name('inactive.vendor');
     Route::get('/active/vendor' , 'ActiveVendor')->name('active.vendor');
-
     Route::get('/active/vendor/details/{id}' , 'activeVendorDetails')->name('active.vendor.details');
     Route::post('/active/vendor/approve' , 'ActiveVendorApprove')->name('active.vendor.approve');
-
     Route::get('/inactive/vendor/details/{id}' , 'InactiveVendorDetails')->name('inactive.vendor.details');
     Route::post('/inactive/vendor/approve' , 'InActiveVendorApprove')->name('inactive.vendor.approve');
   

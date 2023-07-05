@@ -117,14 +117,17 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
-                <div class="menu-title">Coupon System</div>
+                <div class="menu-title">Shipping Area</div>
             </a>
             <ul>
-                <li> <a href="{{ route('coupon.index') }}"><i class="bx bx-right-arrow-alt"></i>All Coupon</a>
+                <li> <a href="{{ route('division.index') }}"><i class="bx bx-right-arrow-alt"></i>All Division</a>
                 </li>
-                <li> <a href="{{ route('coupon.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Coupon</a>
+                <li> <a href="{{ route('division.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Division</a>
                 </li>
-
+                <li> <a href="{{ route('district.index') }}"><i class="bx bx-right-arrow-alt"></i>All District</a>
+                </li>
+                <li> <a href="{{ route('state.index') }}"><i class="bx bx-right-arrow-alt"></i>All State</a>
+                </li>
             </ul>
         </li>
 
