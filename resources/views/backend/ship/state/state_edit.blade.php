@@ -36,7 +36,7 @@
                               <select name="division_id" class="form-select mb-3" aria-label="Default select example">
                                  <option selected="">Open this select menu</option>
                                  @foreach($division as $item)
-                                 <option value="{{ $item->id }}" {{ $item->id == $state->division_id ? 'selected' : ''  }}>{{ $item->division_name }}</option>
+                                 <option value="{{ $item->id }}" {{ $item->id == $state->district->division->id ? 'selected' : ''  }}>{{ $item->division_name }}</option>
                                  @endforeach
                               </select>
                            </div>

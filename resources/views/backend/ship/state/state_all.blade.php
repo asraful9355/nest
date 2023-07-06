@@ -39,7 +39,8 @@
                    @foreach($state as $key => $item)		
                    <tr>
                       <td> {{ $key+1 }} </td>
-                      <td> {{ $item['division']['division_name'] }}</td>
+                      
+                      <td> {{ $item->district->division->division_name }}</td>
                       <td> {{ $item['district']['district_name'] }}</td>
                       <td> {{ $item->state_name }}</td>
                       <td>

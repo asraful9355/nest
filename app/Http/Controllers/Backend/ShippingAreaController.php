@@ -176,7 +176,7 @@ class ShippingAreaController extends Controller
     public function StoreState(Request $request){ 
 
         ShipState::insert([ 
-            'division_id' => $request->division_id, 
+         
             'district_id' => $request->district_id, 
             'state_name' => $request->state_name,
         ]);
@@ -200,14 +200,16 @@ class ShippingAreaController extends Controller
 
 
      public function UpdateState(Request $request){
-
+        // dd($request->all());
         $state_id = $request->id;
 
          ShipState::findOrFail($state_id)->update([
-            'division_id' => $request->division_id, 
+            // 'division_id' => $request->division_id, 
             'district_id' => $request->district_id, 
             'state_name' => $request->state_name,
         ]);
+
+
 
        $notification = array(
             'message' => 'ShipState Updated Successfully',
