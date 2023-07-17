@@ -32,9 +32,10 @@ class CartController extends Controller
                 'price' => $product->selling_price,
                 'weight' => 1,
                 'options' => [
-                    'image' => $product->product_thambnail,
-                    'color' => $request->color,
-                    'size' => $request->size,
+                'image' => $product->product_thambnail,
+                'color' => $request->color,
+                'size' => $request->size,
+                'vendor' => $request->vendor,
                 ],
             ]);
 
@@ -50,9 +51,10 @@ class CartController extends Controller
                 'price' => $product->discount_price,
                 'weight' => 1,
                 'options' => [
-                    'image' => $product->product_thambnail,
-                    'color' => $request->color,
-                    'size' => $request->size,
+                'image' => $product->product_thambnail,
+                'color' => $request->color,
+                'size' => $request->size,
+                'vendor' => $request->vendor,
                 ],
             ]);
 
@@ -80,9 +82,10 @@ class CartController extends Controller
                 'price' => $product->selling_price,
                 'weight' => 1,
                 'options' => [
-                    'image' => $product->product_thambnail,
-                    'color' => $request->color,
-                    'size' => $request->size,
+                'image' => $product->product_thambnail,
+                'color' => $request->color,
+                'size' => $request->size,
+                'vendor' => $request->vendor,
                 ],
             ]);
 
@@ -98,9 +101,10 @@ class CartController extends Controller
                 'price' => $product->discount_price,
                 'weight' => 1,
                 'options' => [
-                    'image' => $product->product_thambnail,
-                    'color' => $request->color,
-                    'size' => $request->size,
+                'image' => $product->product_thambnail,
+                'color' => $request->color,
+                'size' => $request->size,
+                'vendor' => $request->vendor,
                 ],
             ]);
 
