@@ -118,7 +118,6 @@ class StripeController extends Controller
             'notes' => $request->notes,
             'payment_type' =>'Cash On Delivery',
             'payment_method' => 'Cash On Delivery',
-            'transaction_id' => $charge->balance_transaction,
             'currency' =>'Usd',
             'amount' => $total_amount,
             'invoice_no' => 'EOS'.mt_rand(10000000,99999999),
