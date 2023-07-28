@@ -23,6 +23,8 @@ use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\VendorOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -203,6 +205,14 @@ Route::prefix('subsubcategory')->group(function(){
 
 }); 
 
+ // Admin Order All Route 
+ Route::controller(OrderController::class)->group(function(){
+    Route::get('/pending/order' , 'PendingOrder')->name('pending.order');
+
+
+}); 
+
+
  // Shipping State All Route 
  Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('/all/state' , 'AllState')->name('state.index');
@@ -266,7 +276,15 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::get('/vendor/product_active/{id}', [VendorProductController::class, 'VendorProductActive'])->name('vendor.product.active');
     Route::get('/vendor/product_inactive/{id}', [VendorProductController::class, 'VendorProductInactive'])->name('vendor.product.in_active');
     });
-});//end group middleware  
+
+    Route::controller(VendorOrderController::class)->group(function(){
+        Route::get('/vendor/order' , 'VendorOrder')->name('vendor.order');
+    
+    
+    });
+    
+
+});//end Vendor group middleware  
 
 /// Frontend Product Details All Route 
 Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
