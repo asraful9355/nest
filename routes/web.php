@@ -26,6 +26,7 @@ use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\AllUserController;
+use App\Http\Controllers\Backend\ReturnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -221,6 +222,15 @@ Route::prefix('subsubcategory')->group(function(){
 }); 
 
 
+ // Return Order All Route 
+ Route::controller(ReturnController::class)->group(function(){
+    Route::get('/return/request' , 'ReturnRequest')->name('return.request');
+    Route::get('/return/request/approved/{order_id}' , 'ReturnRequestApproved')->name('return.request.approved');
+    Route::get('/complete/return/request' , 'CompleteReturnRequest')->name('complete.return.request');
+
+});
+
+
  // Shipping State All Route 
  Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('/all/state' , 'AllState')->name('state.index');
@@ -401,5 +411,7 @@ Route::controller(AllUserController::class)->group(function(){
     Route::get('/user/order/page' , 'UserOrderPage')->name('user.order.page');
     Route::get('/user/order_details/{order_id}' , 'UserOrderDetails');
     Route::get('/user/invoice_download/{order_id}' , 'UserOrderInvoice');  
+    Route::post('/return/order/{order_id}' , 'ReturnOrder')->name('return.order');
+    Route::get('/return/order/page' , 'ReturnOrderPage')->name('return.order.page');
 }); 
 

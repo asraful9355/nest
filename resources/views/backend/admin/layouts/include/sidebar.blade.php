@@ -168,6 +168,21 @@ $status = $verdorId->status;
             </li>                                                                            
          </ul>
       </li>
+    
+      <li>
+         <a href="javascript:;" class="has-arrow" style="color:white">
+            <div class="parent-icon bgttext"><i class='bgttext bx bx-cart'></i>
+            </div>
+            <div class="menu-title bgttext">Return Order</div>
+         </a>
+         <ul>
+            <li> <a href="{{ route('return.request') }}"><i class="bx bx-right-arrow-alt"></i>Return Request</a>
+            </li>
+            <li> <a href="{{ route('complete.return.request') }}"><i class="bx bx-right-arrow-alt"></i>Complete Request</a>
+            </li>                                                                  
+         </ul>
+      </li>
+    
    
     
      
