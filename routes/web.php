@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ReturnController;
@@ -170,6 +171,17 @@ Route::prefix('subsubcategory')->group(function(){
     
 });
 
+// Report All Route 
+Route::controller(ReportController::class)->group(function(){
+    Route::get('/report/view' , 'ReportView')->name('report.view');
+    Route::post('/search/by/date' , 'SearchByDate')->name('search-by-date');
+    Route::post('/search/by/month' , 'SearchByMonth')->name('search-by-month');
+    Route::post('/search/by/year' , 'SearchByYear')->name('search-by-year');
+    Route::get('/order/by/user' , 'OrderByUser')->name('order.by.user');
+    Route::post('/search/by/user' , 'SearchByUser')->name('search-by-user');
+ }); 
+ 
+
  // ==================== Admin Brand All Routes ===================//
  Route::prefix('coupon')->group(function(){
     Route::get('/index', [CouponController::class, 'index'])->name('coupon.index');
@@ -229,6 +241,8 @@ Route::prefix('subsubcategory')->group(function(){
     Route::get('/complete/return/request' , 'CompleteReturnRequest')->name('complete.return.request');
 
 });
+
+
 
 
  // Shipping State All Route 
@@ -301,7 +315,6 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
         Route::get('/vendor/complete/return/order' , 'VendorCompleteReturnOrder')->name('vendor.complete.return.order');
         Route::get('/vendor/order/details/{order_id}' , 'VendorOrderDetails')->name('vendor.order.details');
     });
-    
 
 });//end Vendor group middleware  
 
