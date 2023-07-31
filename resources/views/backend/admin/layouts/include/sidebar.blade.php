@@ -15,8 +15,6 @@ $status = $verdorId->status;
        color:white;
    }
 </style>
-
-
 <div class="sidebar-wrapper bgt" data-simplebar="true">
    <div class="sidebar-header bgt">
       <div>
@@ -168,7 +166,6 @@ $status = $verdorId->status;
             </li>                                                                            
          </ul>
       </li>
-    
       <li>
          <a href="javascript:;" class="has-arrow" style="color:white">
             <div class="parent-icon bgttext"><i class='bgttext bx bx-cart'></i>
@@ -194,6 +191,19 @@ $status = $verdorId->status;
             <li> <a href="{{ route('order.by.user') }}"><i class="bx bx-right-arrow-alt"></i>Order By User</a>
             </li>
                                                                           
+         </ul>
+      </li>
+      <li>
+         <a href="javascript:;" class="has-arrow" style="color:white">
+            <div class="parent-icon bgttext"><i class='bgttext bx bx-cart'></i>
+            </div>
+            <div class="menu-title bgttext">User Manage</div>
+         </a>
+         <ul>
+            <li> <a href="{{ route('all-user') }}"><i class="bx bx-right-arrow-alt"></i>All User</a>
+            </li>
+            <li> <a href="{{ route('all-vendor') }}"><i class="bx bx-right-arrow-alt"></i>All Vendor</a>
+            </li>
          </ul>
       </li>
    </ul>
