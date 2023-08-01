@@ -219,6 +219,19 @@ $status = $verdorId->status;
             </li>
          </ul>
       </li>
+      <li>
+         <a href="javascript:;" class="has-arrow" style="color:white">
+            <div class="parent-icon bgttext"><i class='bgttext bx bx-cart'></i>
+            </div>
+            <div class="menu-title bgttext">Review Manage</div>
+         </a>
+         <ul>
+            <li> <a href="{{ route('pending.review') }}"><i class="bx bx-right-arrow-alt"></i>Pending Review</a>
+            </li>
+            <li> <a href="{{ route('publish.review') }}"><i class="bx bx-right-arrow-alt"></i>Publish Review</a>
+            </li>
+         </ul>
+      </li>
    </ul>
    <!--end navigation-->
 </div>

@@ -30,6 +30,7 @@ use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ReturnController;
+use App\Http\Controllers\User\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,8 +143,15 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/admin/edit/blog/category/{id}' , 'EditBlogCateogry')->name('edit.blog.category');
     Route::post('/admin/update/blog/category/{id}' , 'UpdateBlogCateogry')->name('update.blog.category');
     Route::get('/admin/delete/blog/category/{id}' , 'DeleteBlogCateogry')->name('delete.blog.category');
+});
 
-
+// Admin Reviw All Route 
+Route::controller(ReviewController::class)->group(function(){
+    Route::get('/pending/review' , 'PendingReview')->name('pending.review');
+    Route::get('/review/approve/{id}' , 'ReviewApprove')->name('review.approve');
+    Route::get('/review/approve/{id}' , 'ReviewApprove')->name('review.approve');
+    Route::get('/publish/review' , 'PublishReview')->name('publish.review'); 
+    Route::get('/review/delete/{id}' , 'ReviewDelete')->name('review.delete');
 });
 
 // Blog Post All Route 
@@ -472,5 +480,11 @@ Route::controller(BlogController::class)->group(function(){
    Route::get('/post/details/{id}/{slug}' , 'BlogDetails');  
    Route::get('/post/details/{id}/{slug}' , 'BlogDetails'); 
    Route::get('/post/category/{id}/{slug}' , 'BlogPostCategory');  
+});
+
+// Frontend Blog Post All Route 
+Route::controller(ReviewController::class)->group(function(){
+   Route::post('/store/review' , 'StoreReview')->name('store.review'); 
+   
 });
    
