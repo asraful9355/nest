@@ -75,12 +75,6 @@
   } );
 </script>
 
-<script>
-  tinymce.init({
-    selector: '.mytextarea'
-  });
-</script>
-
 <!-- tag er jonne neowa atuko -->
 <script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 
@@ -290,3 +284,9 @@ $(function(){
   });
  </script>
 
+<script>
+  tinymce.init({
+    selector: '.mytextarea'
+  });
+ </script>
+ 

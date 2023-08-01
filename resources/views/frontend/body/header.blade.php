@@ -297,11 +297,11 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                         @endforeach
                        
                         <li>
-                           <a href="page-contact.html">
+                           <a href="{{ route('home.blog') }}">
                               @if(session()->get('language') == 'bangla') 
-                                যোগাযোগ
+                              ব্লগ
                               @else 
-                                Contact
+                                Blog
                               @endif
                            </a>
                         </li>
