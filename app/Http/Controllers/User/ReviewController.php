@@ -82,5 +82,14 @@ class ReviewController extends Controller
 
     }// End Method 
 
+    public function VendorAllReview(){
+
+        $id = Auth::user()->id;
+
+        $review = Review::where('vendor_id',$id)->where('status',1)->orderBy('id','DESC')->get();
+        return view('backend.vendor.review.approve_review',compact('review'));
+
+    }// End Method 
+
 
 }

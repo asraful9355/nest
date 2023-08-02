@@ -1,16 +1,15 @@
-@extends('backend.admin.layouts.master')
-<!-- Main Content -->
+@extends('backend.vendor.layouts.master')
 @section('page_content')
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-       <div class="breadcrumb-title pe-3">Publish Review</div>
+       <div class="breadcrumb-title pe-3">Vendor Approve Review</div>
        <div class="ps-3">
           <nav aria-label="breadcrumb">
              <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Publish Review</li>
+                <li class="breadcrumb-item active" aria-current="page">Approve Review</li>
              </ol>
           </nav>
        </div>
@@ -34,14 +33,13 @@
                      <th>Comment </th>
                       <th>Rating </th>
                       <th>Status </th>
-                      <th>Action</th>
                    </tr>
                 </thead>
                 <tbody>
                    @foreach($review as $key => $item)		
                    <tr>
                       <td> {{ $key+1 }} </td>
-                      <td> <img src="{{ asset($item['product']['product_thambnail']) }}" style="width: 40px; height:40px;" ></td>
+                       <td> <img src="{{ asset($item['product']['product_thambnail']) }}" style="width: 40px; height:40px;" ></td>
                       <td>{{ $item->product->product_name_en??'NULL'}}</td>
                       <td>{{ $item['user']['name'] }}</td>
                       <td>{{ Str::limit($item->comment, 25);  }}</td>
@@ -91,9 +89,6 @@
                          <span class="badge rounded-pill bg-warning">Publish</span>
                          @endif
                       </td>
-                      <td>
-                         <a href="{{ route('review.delete',$item->id) }}" class="btn btn-danger" id="delete">Delete</a>
-                      </td>
                    </tr>
                    @endforeach
                 </tbody>
@@ -106,7 +101,6 @@
                      <th>Comment </th>
                       <th>Rating </th>
                       <th>Status </th>
-                      <th>Action</th>
                    </tr>
                 </tfoot>
              </table>
@@ -114,4 +108,4 @@
        </div>
     </div>
  </div>
- @endsection
+@endsection

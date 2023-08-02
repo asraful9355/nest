@@ -56,6 +56,17 @@
                
             </ul>
         </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                </div>
+                <div class="menu-title">Review Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('vendor.all.review') }}"><i class="bx bx-right-arrow-alt"></i>All Review</a>
+ 
+            </ul>
+        </li>
        
     </ul>
     <!--end navigation-->

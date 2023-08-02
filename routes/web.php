@@ -354,6 +354,13 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::get('/vendor/product_inactive/{id}', [VendorProductController::class, 'VendorProductInactive'])->name('vendor.product.in_active');
     });
 
+   // vendor review route 
+   Route::controller(ReviewController::class)->group(function(){
+
+        Route::get('/vendor/all/review' , 'VendorAllReview')->name('vendor.all.review');
+       
+   });
+       
     Route::controller(VendorOrderController::class)->group(function(){
         Route::get('/vendor/order' , 'VendorOrder')->name('vendor.order');
         Route::get('/vendor/return/order' , 'VendorReturnOrder')->name('vendor.return.order');
