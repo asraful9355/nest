@@ -45,15 +45,19 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
           </div>
        </div>
     </div>
+    @php
+    $setting = App\Models\SiteSetting::find(1);
+    @endphp
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
        <div class="container">
           <div class="header-wrap">
              <div class="logo logo-width-1">
-                <a href="/"><img src="{{ asset('frontend/assets/imgs/theme/logo.svg')}}" alt="logo" /></a>
+               <a href="index.html"><img src="{{ asset($setting->logo)   }}" alt="logo" /></a>
              </div>
              <div class="header-right">
                 <div class="search-style-2">
-                   <form action="#">
+                  <form action="{{ route('product.search') }}" method="post">
+                     @csrf
                       <select class="select-active">
                          <option>
                            
@@ -77,7 +81,8 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                          <option>Noodles & Rice</option>
                          <option>Ice cream</option>
                       </select>
-                      <input type="text" placeholder="Search for items..." />
+                      <input onfocus="search_result_show()" onblur="search_result_hide()" name="search" id="search" placeholder="Search for items..." />
+                      <div id="searchProducts"></div>
                    </form>
                 </div>
                 <div class="header-action-right">
@@ -311,7 +316,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
              </div>
              <div class="hotline d-none d-lg-flex">
                 <img src="{{ asset('frontend/assets/imgs/theme/icons/icon-headphone.svg')}}" alt="hotline" />
-                <p>1900 - 888<span>24/7 Support Center</span></p>
+                <p>{{ $setting->support_phone }}<span>24/7 Support Center</span></p>
              </div>
              <div class="header-action-icon-2 d-block d-lg-none">
                 <div class="burger-icon burger-icon-white">
@@ -377,3 +382,25 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
        </div>
     </div>
  </header>
+ 
+ <style>
+   #searchProducts{
+       position: absolute;
+       top: 100%;
+       left: 0;
+       width: 100%;
+       background: #ffffff;
+       z-index: 999;
+       border-radius: 8px;
+       margin-top: 5px;
+   }
+</style>
+
+<script>
+   function search_result_show(){
+       $("#searchProducts").slideDown();
+   }
+   function search_result_hide(){
+       $("#searchProducts").slideUp();
+   }
+</script>

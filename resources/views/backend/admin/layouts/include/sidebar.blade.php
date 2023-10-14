@@ -106,6 +106,17 @@ $status = $verdorId->status;
       </li>
       <li>
          <a href="javascript:;" class="has-arrow" style="color:white">
+            <div class="parent-icon bgttext"><i class='fa-solid fa-bag-shopping fontawesome_icon_custom'></i>
+            </div>
+            <div class="menu-title bgttext">Stock Manage</div>
+         </a>
+         <ul>
+            <li> <a href="{{ route('product.stock') }}"><i class="bx bx-right-arrow-alt "></i>Product Stock</a>
+            </li>
+         </ul>
+      </li>
+      <li>
+         <a href="javascript:;" class="has-arrow" style="color:white">
             <div class="parent-icon bgttext"><i class="bx bx-category"></i>
             </div>
             <div class="menu-title bgttext">Coupon System</div>
@@ -229,6 +240,19 @@ $status = $verdorId->status;
             <li> <a href="{{ route('pending.review') }}"><i class="bx bx-right-arrow-alt"></i>Pending Review</a>
             </li>
             <li> <a href="{{ route('publish.review') }}"><i class="bx bx-right-arrow-alt"></i>Publish Review</a>
+            </li>
+         </ul>
+      </li>
+      <li>
+         <a href="javascript:;" class="has-arrow" style="color:white">
+            <div class="parent-icon bgttext"><i class='bgttext bx bx-cart'></i>
+            </div>
+            <div class="menu-title bgttext">Setting Manage</div>
+         </a>
+         <ul>
+            <li> <a href="{{ route('site.setting') }}"><i class="bx bx-right-arrow-alt"></i>Site Setting</a>
+            </li>
+            <li> <a href="{{ route('seo.setting') }}"><i class="bx bx-right-arrow-alt"></i>Seo Setting</a>
             </li>
          </ul>
       </li>

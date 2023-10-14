@@ -31,6 +31,7 @@ use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\User\ReviewController;
+use App\Http\Controllers\Backend\SiteSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,7 @@ Route::prefix('product')->group(function(){
     /* ================  Category & Subcategory With Ajax ================== */
     Route::get('/category-subcategory/ajax/{category_id}',[ProductController::class,'getsubcategory'])->name('subcategory.product.ajax');
 	
+    Route::get('/product/stock' ,[ProductController::class,'ProductStock'])->name('product.stock');
 
 });
  // ==================== Admin Brand All Routes ===================//
@@ -107,6 +109,16 @@ Route::prefix('brand')->group(function(){
     Route::get('/delete/{id}', [BrandController::class, 'delete'])->name('brand.delete');
     Route::get('/brand_active/{id}', [BrandController::class, 'active'])->name('brand.active');
     Route::get('/brand_inactive/{id}', [BrandController::class, 'inactive'])->name('brand.in_active');
+});
+
+   // ==================== Site Setting All Routes ===================//
+Route::controller(SiteSettingController::class)->group(function(){
+
+    Route::get('/site/setting' , 'SiteSetting')->name('site.setting');
+    Route::post('/site/setting/update' , 'SiteSettingUpdate')->name('site.setting.update');
+    Route::get('/seo/setting' , 'SeoSetting')->name('seo.setting');
+    Route::post('/seo/setting/update' , 'SeoSettingUpdate')->name('seo.setting.update');
+   
 });
     // ==================== Admin Slider All Routes ===================//
 Route::prefix('slider')->group(function(){
@@ -479,6 +491,10 @@ Route::controller(AllUserController::class)->group(function(){
     Route::get('/user/invoice_download/{order_id}' , 'UserOrderInvoice');  
     Route::post('/return/order/{order_id}' , 'ReturnOrder')->name('return.order');
     Route::get('/return/order/page' , 'ReturnOrderPage')->name('return.order.page');
+
+    // Order Tracking 
+    Route::get('/user/track/order' , 'UserTrackOrder')->name('user.track.order');
+    Route::post('/order/tracking' , 'OrderTracking')->name('order.tracking');
 }); 
 
 // Frontend Blog Post All Route 
@@ -489,9 +505,16 @@ Route::controller(BlogController::class)->group(function(){
    Route::get('/post/category/{id}/{slug}' , 'BlogPostCategory');  
 });
 
+// Search All Route 
+Route::controller(IndexController::class)->group(function(){
+
+    Route::post('/search' , 'ProductSearch')->name('product.search');
+    Route::post('/search-product' , 'SearchProduct'); 
+    
+});
+
 // Frontend Blog Post All Route 
 Route::controller(ReviewController::class)->group(function(){
    Route::post('/store/review' , 'StoreReview')->name('store.review'); 
-   
 });
    

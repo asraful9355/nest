@@ -1,9 +1,13 @@
+@php
+  $seo = App\Models\Seo::find(1);
+@endphp
 <meta charset="utf-8" />
 <title>Easy Shop Online Store</title>
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="" />
+<meta name="title" content="{{ $seo->meta_title }}" />
+<meta name="author" content="{{ $seo->meta_author }}" />
+<meta name="keywords" content="{{ $seo->meta_keyword }}" />
+<meta name="description" content="{{ $seo->meta_description }}" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta property="og:type" content="" />
 <meta property="og:url" content="" />

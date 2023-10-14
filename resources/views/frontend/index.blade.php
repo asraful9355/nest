@@ -40,7 +40,6 @@
                            </a>
                         </div>
                         <div class="product-action-1">
-                        
                            <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
                            <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                            <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
@@ -75,7 +74,6 @@
                         @endphp
                         <div class="product-rate d-inline-block">
                            @if($avarage == 0)
-
                            @elseif($avarage == 1 || $avarage < 2)                     
                         <div class="product-rating" style="width: 20%"></div>
                            @elseif($avarage == 2 || $avarage < 3)                     
